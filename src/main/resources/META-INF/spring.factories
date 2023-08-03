@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    hiforce.render.protocol.config.RenderProtocolConfig
