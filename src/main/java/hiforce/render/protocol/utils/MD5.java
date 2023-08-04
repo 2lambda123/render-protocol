@@ -100,11 +100,6 @@ public class MD5 {
             out[j++] = digits[(0xF0 & bt[i]) >>> 4];
             out[j++] = digits[0x0F & bt[i]];
         }
-
-        if (log.isDebugEnabled()) {
-            log.debug("[hash]" + (new String(out)));
-        }
-
         return new String(out);
     }
 }

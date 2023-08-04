@@ -25,7 +25,7 @@ public interface IPageRenderResult {
     /**
      * @return 获取本次会话的查询参数
      */
-    IQueryParam getQueryParam();
+    IRenderParam getRenderParam();
 
     /**
      * 构建本次会话涉及到的提交参数

@@ -15,7 +15,7 @@ public class RenderFunction implements Serializable {
 
     @Getter
     @Setter
-    private IQueryParam queryParam;
+    private IRenderParam renderParam;
 
     @Getter
     @Setter

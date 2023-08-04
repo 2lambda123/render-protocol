@@ -20,11 +20,11 @@ public class Linkage implements Serializable {
     private boolean compress;
 
     /**
-     * 当前页面的查询参数
+     * 当前页面的渲染参数
      */
     @Getter
     @Setter
-    private String queryParams;
+    private String renderParams;
 
     /**
      * 当前页面的提交参数

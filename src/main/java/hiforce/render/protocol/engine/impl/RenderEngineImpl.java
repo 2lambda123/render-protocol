@@ -11,7 +11,7 @@ import hiforce.render.protocol.model.Data;
 import hiforce.render.protocol.model.Endpoint;
 import hiforce.render.protocol.model.Hierarchy;
 import hiforce.render.protocol.model.IPageRenderResult;
-import hiforce.render.protocol.model.IQueryParam;
+import hiforce.render.protocol.model.IRenderParam;
 import hiforce.render.protocol.model.ISubmitParam;
 import hiforce.render.protocol.model.Linkage;
 import hiforce.render.protocol.model.RenderData;
@@ -60,9 +60,9 @@ public class RenderEngineImpl implements RenderEngine {
         if (StringUtils.isNotEmpty(request.getLinkage())) {
             Linkage linkage = JacksonUtils.deserialize(request.getLinkage(), Linkage.class);
             renderFunction.setLinkage(linkage);
-            if (null != linkage && StringUtils.isNotEmpty(linkage.getQueryParams())) {
-                renderFunction.setQueryParam(
-                        deCompressData(linkage.isCompress(), linkage.getQueryParams(), IQueryParam.class));
+            if (null != linkage && StringUtils.isNotEmpty(linkage.getRenderParams())) {
+                renderFunction.setRenderParam(
+                        deCompressData(linkage.isCompress(), linkage.getRenderParams(), IRenderParam.class));
             }
             if (null != linkage && StringUtils.isNotEmpty(linkage.getSubmitParams())) {
                 renderFunction.setSubmitParam(
@@ -91,24 +91,24 @@ public class RenderEngineImpl implements RenderEngine {
         return renderPage(true, renderFunction, function);
     }
 
-    private void attachQueryParam(RenderFunction render) {
+    private void attachRenderParam(RenderFunction render) {
         if (null == render) {
             return;
         }
-        if (null == render.getQueryParam()) {
+        if (null == render.getRenderParam()) {
             return;
         }
         if (null == render.getData() || MapUtils.isEmpty(render.getData())) {
             return;
         }
-        render.getData().forEach((key, value) -> value.attachQueryParam(render.getQueryParam()));
+        render.getData().forEach((key, value) -> value.attachRenderParam(render.getRenderParam()));
     }
 
     private void makeupSubmitParam(RenderFunction render) {
         if (null == render) {
             return;
         }
-        if (null == render.getQueryParam()) {
+        if (null == render.getRenderParam()) {
             return;
         }
         if (null == render.getData() || MapUtils.isEmpty(render.getData())) {
@@ -119,7 +119,7 @@ public class RenderEngineImpl implements RenderEngine {
 
     private RenderPageRespDTO renderPage(boolean adjustRender, RenderFunction render, Function<RenderFunction, IPageRenderResult> function) {
         //Step 1: 调用渲染处理逻辑之前，可以先做查询参数丰富
-        attachQueryParam(render);
+        attachRenderParam(render);
 
         //Step 2: 调用业务系统的后台处理逻辑，获取标准化的页面渲染结果
         IPageRenderResult result = function.apply(render); //这里得到ShoppingResult
@@ -233,7 +233,7 @@ public class RenderEngineImpl implements RenderEngine {
         try {
             Linkage linkage = new Linkage();
 
-            linkage.setQueryParams(CompressUtils.compress(JacksonUtils.serialize(result.getQueryParam())));
+            linkage.setRenderParams(CompressUtils.compress(JacksonUtils.serialize(result.getRenderParam())));
             linkage.setSubmitParams(CompressUtils.compress(
                     JacksonUtils.serialize(buildCreateOrderReqDTO(components, result))));
             linkage.setCompress(true);

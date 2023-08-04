@@ -95,9 +95,9 @@ public class BaseCO implements Serializable {
     }
 
     /**
-     * @param queryParam 把当前组件的值，Attach到QueryParam上，用于本次查询参数的更新
+     * @param renderParam 把当前组件的值，Attach到RenderParam上，用于本次查询参数的更新
      */
-    public void attachQueryParam(IQueryParam queryParam) {
+    public void attachRenderParam(IRenderParam renderParam) {
 
     }
 

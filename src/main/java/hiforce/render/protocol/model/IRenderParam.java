@@ -9,5 +9,5 @@ import java.io.Serializable;
  * @since 2020/8/12
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, property = "$class")
-public interface IQueryParam extends Serializable {
+public interface IRenderParam extends Serializable {
 }
