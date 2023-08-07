@@ -361,7 +361,12 @@
     <developers>
         <developer>
             <name>Rocky Yu</name>
-            <email>rocky@yze.cn</email>
+            <email>rocky@hiforce.com</email>
+            <organization>Hiforce Open Group</organization>
+        </developer>
+        <developer>
+            <name>Shen Huan</name>
+            <email>shenhuan@hiforce.com</email>
             <organization>Hiforce Open Group</organization>
         </developer>
     </developers>
