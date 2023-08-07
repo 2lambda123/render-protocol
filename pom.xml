@@ -9,7 +9,7 @@
     <name>render-protocol</name>
 
     <description>
-
+        The Render Protocol framework is an end-to-end page dynamic solution. The framework abstracts a set of page block and behavior communication protocols. The front-end and back-end interact based on this protocol to realize cross-end and component dynamics.
     </description>
     <url>https://github.com/hiforce/render-protocol</url>
     <inceptionYear>2023</inceptionYear>
@@ -61,16 +61,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-test</artifactId>-->
-<!--            -->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-context</artifactId>-->
-<!--            <version>6.0.11</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.hiforce.lattice</groupId>
             <artifactId>lattice-model</artifactId>
